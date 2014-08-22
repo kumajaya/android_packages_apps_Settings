@@ -36,6 +36,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.os.SystemProperties;
 
 import com.android.settings.R;
 
@@ -258,6 +259,7 @@ public class ButtonBacklightBrightness extends DialogPreference implements
     private void applyTimeout(int timeout) {
         Settings.System.putInt(mResolver,
                 Settings.System.BUTTON_BACKLIGHT_TIMEOUT, timeout * 1000);
+        SystemProperties.set("sys.button.timeout", Integer.toString(timeout));
     }
 
     private void updateBrightnessPreview() {
